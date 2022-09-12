@@ -2,6 +2,8 @@ import discord
 from discord.ext.commands import Bot, has_permissions, CheckFailure
 from discord.ext import commands
 
+spam = True
+
 bot = commands.Bot(command_prefix='()', help_command=None)
 client = Bot("()")
 
@@ -16,7 +18,6 @@ async def help(ctx):
 @bot.command()
 async def bagel(ctx):
     await ctx.reply('bagels are tasty ngl')
-spam = True
 
 @bot.command()
 async def spam(ctx, message, num):
