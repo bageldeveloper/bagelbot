@@ -21,7 +21,7 @@ async def bagel(ctx):
 
 @bot.command()
 async def spam(ctx, message, num):
-        for x in range(num):
+        for x in range(int(num)):
             await ctx.author.send(message)
 
 @bot.command()
