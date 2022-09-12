@@ -1,6 +1,8 @@
 import discord
 from discord.ext.commands import Bot, has_permissions, CheckFailure
 from discord.ext import commands
+from listsforstuff import jokes
+import random
 
 spam = True
 
@@ -13,7 +15,7 @@ async def on_ready():
 
 @bot.command()
 async def help(ctx):
-    await ctx.reply(f'```\n()help: types a list of commands, the thing you just did``````\n()bagel: find it out for yourself``````\n()spam: enter in the message you want to send, the number of times to send it, and it will spam you``````\n()spamstop: stop the bot from spamming you``````\n()spamchat: spams the chat you enter this command into, enter in the message you want to spam and it will spam forever until stopped, only admins can use it``````\n()spamchatstop: stop the bot from spamming the chat, anyone can use this command``````\n()bagel: find it out for yourself``````\nalso {ctx.author} is pretty cringe ngl```')
+    await ctx.reply(f'```\n()help: types a list of commands, the thing you just did``````\n()bagel: find it out for yourself``````\n()spam: enter in the message you want to send, the number of times to send it, and it will spam you``````\n()spamstop: stop the bot from spamming you``````\n()spamchat: spams the chat you enter this command into, enter in the message you want to spam and it will spam forever until stopped, only admins can use it``````\n()spamchatstop: stop the bot from spamming the chat, anyone can use this command``````\n()bagel: find it out for yourself``````\n()joke: tells you a super funny joke, like actually hilarious, definitley not a list I got from a website``````\nalso {ctx.author} is pretty cringe ngl```')
 
 @bot.command()
 async def bagel(ctx):
@@ -50,5 +52,10 @@ async def spamchatstop(ctx):
     global spam
     spam = False
     await ctx.reply('man why did you stop the spam?')
+
+@bot.command()
+async def joke(ctx):
+    
+    await ctx.reply(random.choice(jokes))
 
 bot.run('MTAwNDEyOTg1MTc1OTkyNzMyNg.GPgdG_.z5Sx2ju2iAW3PfKcuBQ2vCDumSkr8GCt0DonbI')
