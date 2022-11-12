@@ -1,8 +1,10 @@
-import discord
-from discord.ext.commands import Bot, has_permissions, CheckFailure
-from discord.ext import commands
-from listsforstuff import jokes
 import random
+
+import discord
+from discord.ext import commands
+from discord.ext.commands import Bot, CheckFailure, has_permissions
+
+from listsforstuff import ball, jokes
 
 spam = True
 
@@ -15,7 +17,7 @@ async def on_ready():
 
 @bot.command()
 async def help(ctx):
-    await ctx.reply(f'```\n()help: types a list of commands, the thing you just did``````\n()bagel: find it out for yourself``````\n()spam: enter in the message you want to send, the number of times to send it, and it will spam you``````\n()spamstop: stop the bot from spamming you``````\n()spamchat: spams the chat you enter this command into, enter in the message you want to spam and it will spam forever until stopped, only admins can use it``````\n()spamchatstop: stop the bot from spamming the chat, anyone can use this command``````\n()bagel: find it out for yourself``````\n()joke: tells you a super funny joke, like actually hilarious, definitley not a list I got from a website``````\nalso {ctx.author} is pretty cringe ngl```')
+    await ctx.reply(f'```\n()help: types a list of commands, the thing you just did``````\n()eightball: put a question after the command and the truth will be revealed``````\n()bagel: find it out for yourself``````\n()spam: enter in the message you want to send, the number of times to send it, and it will spam you``````\n()spamstop: stop the bot from spamming you``````\n()spamchat: spams the chat you enter this command into, enter in the message you want to spam and it will spam forever until stopped, only admins can use it``````\n()spamchatstop: stop the bot from spamming the chat, anyone can use this command``````\n()bagel: find it out for yourself``````\n()joke: tells you a super funny joke, like actually hilarious, definitley not a list I got from a website``````\nalso {ctx.author} is pretty cringe ngl```')
 
 @bot.command()
 async def bagel(ctx):
@@ -57,5 +59,12 @@ async def spamchatstop(ctx):
 async def joke(ctx):
     
     await ctx.reply(random.choice(jokes))
+
+@bot.command()
+async def eightball(ctx, message):
+    if not message:
+        await ctx.reply("you need to put in a question after the command, stupid") 
+    else:
+        await ctx.reply(random.choice(ball))
 
 bot.run('MTAwNDEyOTg1MTc1OTkyNzMyNg.GPgdG_.z5Sx2ju2iAW3PfKcuBQ2vCDumSkr8GCt0DonbI')
